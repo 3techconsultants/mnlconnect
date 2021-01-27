@@ -1,24 +1,38 @@
  <?php
 
  include __DIR__."/../vendor/autoload.php";
-
- # set user string ,pass,apikey,resellerid string ,debug true or false provide by Qu3bolaConnect ej
- $mnl  = new Mnl\Connect\Connect('test@gmail.com','dinger1234','123123','123123',true);
-
 /*
- * Send recahrge  topup
- * $phonenumber
- * $rateId
- * $custom id or false
+ *  Mnl connect
  */
-//$topup_recharge  = $qu3bola->Sendrecharge(53000,16,9);
+ use Mnl\DefaultException\DefaultException;
 
-//$nauta_recharge  = $qu3bola->Sendrechargenauta('sar@nauta.com',16,9);
+ try {
 
-$balance  = $qu3bola->Getbalance();
+   $mnl             = new Mnl\Connect\Connect();
+   /*
+    * Defined Vars
+    */
+   $mnl->user       = '{user}';
 
-var_dump($balance);
+   $mnl->pass       = '{pass}';
 
-//print_r($balance);
+   $mnl->apikey     = '{apikey}';
 
-//$rates           = $qu3bola->Getrates();
+   $mnl->debug      = true;
+
+   $result  = $mnl->SendRecharge($phonenumber,$rateid,$customid);
+
+   $result  = $mnl->SendRechargeNauta($nautaaccount,$rateid,$customid);
+
+   $result  = $mnl->GetBalance();
+
+   $result  = $mnl->GetRechargeIdStatus();
+
+   $result  = $mnl->GetCustomIdStatus();
+
+   var_dump($result);
+
+ } catch (DefaultException $e) {
+
+   var_dump($e->getError());
+ }

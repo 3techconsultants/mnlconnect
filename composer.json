@@ -16,7 +16,8 @@
     {
       "psr-4":
       {
-        "Mnl\\Connect\\": "src/"
+        "Mnl\\Connect\\": "src/",
+        "Mnl\\DefaultException\\": "src/"
       }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Mnl\Connect;
 
+use Mnl\DefaultException\DefaultException;
+
 class Connect{
 
   public $host;
@@ -14,64 +16,43 @@ class Connect{
 
   public $time;
 
-  public $resellerid;
-
   public $apikey;
+
+  public $debug;
 
   public $timeout = 60;
 
-  public function __construct($user,$pass,$apikey,$resellerid,$debug)
+  private function validate()
   {
 
-    $this->user       = $user;
-
-    $this->pass       = $pass;
-
-    $this->time       = time();
-
-    $this->resellerid = $resellerid;
-
-    $this->apikey     = $apikey;
-
-    #set Beta or production endpoint
-
-    ($debug)? $this->host='https://beta.qu3bola.com' :  $this->host='https://api.qu3bola.com';
-  }
-  public function SendRecharge($phonenumber,$rateId,$customId = false)
-  {
-
-    $data =['phonenumber'=>$phonenumber,'ratesid'=>$rateId];
-
-    if($customId){
-        $data ['customid'] = $customId;
+    if(!$this->user){
+      throw new DefaultException(1,"user is mandatory",'usuario es obligatorio');
+    }
+    if(!$this->pass){
+      throw new DefaultException(2,"pass is mandatory",'pass es obligatoria');
+    }
+    if(!$this->apikey){
+      throw new DefaultException(4,"apikey is mandatory",'apikey es obligatorio');
     }
 
-    return $this->Connect('/topuprecharge',$data);
-
-  }
-  public function SendrechargeNauta($nautaaccount,$rateId,$customId = false)
-  {
-    $data =['nautaaccount'=>$nautaaccount,'ratesid'=>$rateId];
-
-    if($customId){
-        $data ['customid'] = $customId;
+    if(!$this->debug){
+      throw new DefaultException(4,"debug is mandatory",'debug es obligatorio');
     }
-
-    return $this->Connect('/nautarecharge',$data);
+    if(!is_bool($this->debug)){
+        throw new DefaultException(4,"debug is boolean",'debug es boleano');
+    }
   }
   private function Connect($uri,$data,$post=true)
   {
 
     $ch      = curl_init();
 
-    $payload = json_encode($data);
-
-    curl_setopt($ch, CURLOPT_URL,$this->host.$uri);
+      curl_setopt($ch, CURLOPT_URL,$this->host.$uri);
 
     if($post){
 
       curl_setopt($ch, CURLOPT_POST, TRUE);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "rechargeData=$payload");
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     }
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -83,23 +64,24 @@ class Connect{
     $remote_server_output = curl_exec ($ch);
 
     if($remote_server_output === false){
-      return (object)['error' => 'connection error'];
+        throw new DefaultException(1,'Connection Error','Connection Error');
     }
-
 
     $information          = curl_getinfo($ch);
 
     curl_close ($ch);
 
-    return json_decode($remote_server_output);
-  }
-  public function GetBalance()
-  {
-    return $this->Connect("/reseller/$this->resellerid",[],false);
-  }
-  public function GetRates()
-  {
-    return $this->Connect('/ratesreseller',[],false);
+    $data = json_decode($remote_server_output);
+
+    if(isset($data->Status)){
+
+      if($data->Status=='error'){
+          throw new DefaultException($data->APICode,$data->APICodeTextEN,$data->APICodeTextSP);
+      }
+
+    }
+
+    return $data;
   }
   private function GenerateHeader()
   {
@@ -110,5 +92,54 @@ class Connect{
         $header = ["Http-X-Hash:$hash","Http-X-Request-Time:".($this->time),"Http-X-User:$this->user","Http-X-ApiKey:$this->apikey"];
 
         return $header;
+  }
+  public function __construct()
+  {
+    $this->time       = time();
+
+    ($this->debug)? $this->host ='https://v2.qu3bola.com' :  $this->host='https://beta.qu3bola.com';
+  }
+  public function SendRecharge($phonenumber,$rateid,$customid = false)
+  {
+
+    $this->validate();
+
+    $data =['phonenumber'=>$phonenumber,'ratesid'=>$rateid];
+
+    if($customid){
+        $data ['customid'] = $customid;
+    }
+
+    return $this->Connect('/topuprecharge',$data);
+  }
+  public function SendRechargeNauta($nautaaccount,$rateid,$customid = false)
+  {
+    $data =['nautaaccount'=>$nautaaccount,'ratesid'=>$rateid];
+
+    if($customid){
+        $data ['customid'] = $customid;
+    }
+
+    return $this->Connect('/nautarecharge',$data);
+  }
+  public function GetBalance()
+  {
+    return $this->Connect("/reseller/get?data=balance",[],false);
+  }
+  public function GetRates()
+  {
+    return $this->Connect('/ratesreseller',[],false);
+  }
+  public function GetRechargeIdStatus($rechargeid)
+  {
+    $data = ['rechargeid'=>$rechargeid,'method'=>'getrechargestatus'];
+    return $this->Connect('/reports',$data);
+
+  }
+  public function GetCustomIdStatus($customid)
+  {
+    $data = ['customid'=>$customid,'method'=>'getrechargestatus'];
+
+    return $this->Connect('/reports',$data);
   }
 }
