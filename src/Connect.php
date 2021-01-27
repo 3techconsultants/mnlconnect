@@ -2,7 +2,7 @@
 
 namespace Mnl\Connect;
 
-class Ws{
+class Connect{
 
   public $host;
 
