@@ -71,7 +71,7 @@ Error result Example
 
    $result  = $mnl->GetRechargeIdStatus();
 
-   $result  = $mnl->CustomIdStatus();
+   $result  = $mnl->GetCustomIdStatus();
    
    $result  = $mnl->GetRates();
 
