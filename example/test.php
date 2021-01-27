@@ -3,7 +3,7 @@
  include __DIR__."/../vendor/autoload.php";
 
  # set user string ,pass,apikey,resellerid string ,debug true or false provide by Qu3bolaConnect ej
- $mnl  = new Mnl\Connect\Connect('wportillo1990@gmail.com','dinger1234','123123','123123',true);
+ $mnl  = new Mnl\Connect\Connect('test@gmail.com','dinger1234','123123','123123',true);
 
 /*
  * Send recahrge  topup
