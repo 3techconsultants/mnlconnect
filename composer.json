@@ -1,0 +1,21 @@
+{
+    "name": "3techconsultants/mnlconnect",
+    "description": "Reseller library",
+    "type": "library",
+    "version": "v0.0.1",
+    "license": "MIT",
+    "require": {},
+    "authors": [
+        {
+            "name": "3techconsultants",
+            "email": "admin@3techconsultants.com"
+        }
+    ],
+    "autoload":
+    {
+      "psr-4":
+      {
+        "Mnl\\Connect\\": "src/"
+      }
+    }
+}
