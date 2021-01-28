@@ -4,8 +4,8 @@
 
     composer require 3techconsultants/mnlconnect
     
-  Webservice JSON
-     https://documenter.getpostman.com/view/14373051/TW6xmSv4
+Webservice Json
+    https://documenter.getpostman.com/view/14373051/TW6xmSv4
 
 Github Project
     https://github.com/3techconsultants/mnlconnect
