@@ -1,4 +1,4 @@
-# MNL Conect Doc
+# MNL Connect Documentation
 
   Composer install
 
@@ -10,28 +10,29 @@ Webservice Json
 Github Project
     https://github.com/3techconsultants/mnlconnect
 
-Ok result Example
+**Ok Result Example:**
 ```json
 {
-    "APICode": "3",
-    "Status": "pending",
-    "APICodeTextSP": "La transaccion esta pendiente.",
-    "APICodeTextEN": "Transaction is pending",
-    "RechargeId": 511289,
-    "CustomId": null,
-    "ConfirmationId": null
+    "APICode": "1",
+    "Status": "ok",
+    "APICodeTextSP": "Destino ha sido recargado.",
+    "APICodeTextEN": "Destination has been recharged.",
+    "RechargeId": 1119122,
+    "ConfirmationId": 130406260,
+    "CustomId": null
 }
 ```
-Error result Example
+
+
+**Error Result Example:**
 ```json
 {
-    "APICode": "3",
+    "APICode": "22",
     "Status": "error",
-    "APICodeTextSP": "La transaccion esta pendiente.",
-    "APICodeTextEN": "Transaction is pending",
-    "RechargeId": 511289,
-    "CustomId": null,
-    "ConfirmationId": null
+    "APICodeTextSP": "Destino no pertenece a cliente con servicio.",
+    "APICodeTextEN": "Destination not assigned to a subscriber.",
+    "RechargeId": 1119030,
+    "CustomId": null
 }
 ```
 
@@ -78,7 +79,7 @@ Error result Example
    
    $result  = $mnl->GetRates();
 
-   var_dump($result);
+   var_dump($resulte);
 
  } catch (DefaultException $e) {
  	var_dump($e->getError());
