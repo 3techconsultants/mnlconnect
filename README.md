@@ -79,7 +79,7 @@ Github Project
    
    $result  = $mnl->GetRates();
 
-   var_dump($resulte);
+   var_dump($result);
 
  } catch (DefaultException $e) {
  	var_dump($e->getError());
