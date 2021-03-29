@@ -1,6 +1,6 @@
 <?php
 
-namespace Mnl\DefaultException;
+namespace Utilimum\DefaultException;
 
 class DefaultException extends \Exception{
 

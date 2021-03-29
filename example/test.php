@@ -4,31 +4,37 @@
 /*
  *  Mnl connect
  */
- use Mnl\DefaultException\DefaultException;
+ use Utilimum\DefaultException\DefaultException;
 
  try {
 
-   $mnl             = new Mnl\Connect\Connect();
+   $um             = new Utilimum\Connect\Connect();
    /*
     * Defined Vars
     */
-   $mnl->user       = '{user}';
+   $um->user       = '{user}';
 
-   $mnl->pass       = '{pass}';
+   $um->pass       = '{pass}';
 
-   $mnl->apikey     = '{apikey}';
+   $um->apikey     = '{apikey}';
+   
+   /*
+    * Default Provider
+    * Utilimum
+    */
+   $um->provider      = 1;
 
-   $mnl->debug      = true;
+   $um->debug         = true;
 
-   $result  = $mnl->SendRecharge($phonenumber,$rateid,$customid);
+   $result  = $um->SendRecharge($phonenumber,$rateid,$customid);
 
-   $result  = $mnl->SendRechargeNauta($nautaaccount,$rateid,$customid);
+   $result  = $um->SendRechargeNauta($nautaaccount,$rateid,$customid);
 
-   $result  = $mnl->GetBalance();
+   $result  = $um->GetBalance();
 
-   $result  = $mnl->GetRechargeIdStatus();
+   $result  = $um->GetRechargeIdStatus();
 
-   $result  = $mnl->GetCustomIdStatus();
+   $result  = $um->GetCustomIdStatus();
 
    var_dump($result);
 

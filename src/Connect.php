@@ -1,8 +1,8 @@
 <?php
 
-namespace Mnl\Connect;
+namespace Utilimum\Connect;
 
-use Mnl\DefaultException\DefaultException;
+use Utilimum\DefaultException\DefaultException;
 
 class Connect{
 
@@ -20,7 +20,9 @@ class Connect{
 
   public $debug;
 
-  public $timeout = 60;
+  public $provider  = 2;
+
+  public $timeout   = 60;
 
   private function validate()
   {
@@ -94,10 +96,19 @@ class Connect{
         return $header;
   }
   public function __construct()
+
   {
     $this->time       = time();
 
-    ($this->debug)? $this->host ='https://v2.qu3bola.com' :  $this->host='https://beta.qu3bola.com';
+    switch($this->provider){
+      case 1:
+          ($this->debug)? $this->host ='https://api.qu3bola.com' :  $this->host='https://beta.qu3bola.com';
+      break;
+      case 2:
+          ($this->debug)? $this->host ='https://api.utilimum.com' :  $this->host='https://beta.utilimum.com';
+      break;
+    }
+
   }
   public function SendRecharge($phonenumber,$rateid,$customid = false)
   {
