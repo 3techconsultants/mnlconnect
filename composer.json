@@ -1,5 +1,5 @@
 {
-    "name": "3techconsultants/mnlconnect",
+    "name": "3techconsultants/Utilimum",
     "description": "Reseller library",
     "type": "library",
     "version": "v0.0.1",
@@ -16,8 +16,8 @@
     {
       "psr-4":
       {
-        "Mnl\\Connect\\": "src/",
-        "Mnl\\DefaultException\\": "src/"
+        "Utilimum\\Connect\\": "src/",
+        "Utilimum\\DefaultException\\": "src/"
       }
     }
 }
