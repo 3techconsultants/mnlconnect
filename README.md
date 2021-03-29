@@ -1,8 +1,8 @@
-# MNL Connect Documentation
+# Utilimum Connect Documentation
 
   Composer install
 
-    composer require 3techconsultants/mnlconnect
+    composer require 3techconsultants/utilimum
     
 Webservice Json
     https://documenter.getpostman.com/view/14373051/TW6xmSv4
@@ -40,28 +40,28 @@ Github Project
 /*
  *  Mnl connect
  */
- use Mnl\DefaultException\DefaultException;
+ use Utilimum\DefaultException\DefaultException;
 
  try {
 
-   $mnl             = new Mnl\Connect\Connect();
+    $um            = new Utilimum\Connect\Connect();
    /*
     * Defined Vars
     */
-   $mnl->user       = '{user}';
+    $um->user       = '{user}';
 
-   $mnl->pass       = '{pass}';
+    $um->pass       = '{pass}';
 
-   $mnl->apikey     = '{apikey}';
+    $um->apikey     = '{apikey}';
 
-   $mnl->debug      = true;
+    $um->debug      = true;
 /*
  *  Mnl connect
  * @phonenumber int 5350000010
  * @rateid int [ get in method GetRates() ]
  * @customid int [no mandatory id from you platform]
  */
-   $result  = $mnl->SendRecharge($phonenumber,$rateid,$customid);
+   $result  = $um->SendRecharge($phonenumber,$rateid,$customid);
 
 /*
  * Mnl connect
@@ -69,15 +69,15 @@ Github Project
  * @rateid int [ get in method GetRates() ]
  * @customid int [no mandatory id from you platform]
  */
-   $result  = $mnl->SendRechargeNauta($nautaaccount,$rateid,$customid);
+   $result  = $um->SendRechargeNauta($nautaaccount,$rateid,$customid);
 
-   $result  = $mnl->GetBalance();
+   $result  = $um->GetBalance();
 
-   $result  = $mnl->GetRechargeIdStatus();
+   $result  = $um->GetRechargeIdStatus();
 
-   $result  = $mnl->GetCustomIdStatus();
+   $result  = $um->GetCustomIdStatus();
    
-   $result  = $mnl->GetRates();
+   $result  = $um->GetRates();
 
    var_dump($result);
 
