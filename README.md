@@ -58,16 +58,16 @@ Github Project
 /*
  *  Utilimum connect
  * @phonenumber int 5350000010
- * @rateid int [ get in method GetRates() ]
- * @customid int [no mandatory id from you platform]
+ * @rateid int [ get it with method GetRates() ]
+ * @customid int [optional id from your platform]
  */
    $result  = $um->SendRecharge($phonenumber,$rateid,$customid);
 
 /*
  * Utilimum connect
  * @nautaaccount int test@nauta.com.cu
- * @rateid int [ get in method GetRates() ]
- * @customid int [no mandatory id from you platform]
+ * @rateid int [ get it with method GetRates() ]
+ * @customid int [optional id from your platform]
  */
    $result  = $um->SendRechargeNauta($nautaaccount,$rateid,$customid);
 
