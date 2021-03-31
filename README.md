@@ -55,6 +55,11 @@ Github Project
     $um->apikey     = '{apikey}';
 
     $um->debug      = true;
+    
+   /* Default Provider
+    * Utilimum
+    */
+   $um->provider      = 1;
 /*
  *  Utilimum connect
  * @phonenumber int 5350000010
