@@ -8,7 +8,7 @@ Webservice Json
     https://documenter.getpostman.com/view/14373051/TW6xmSv4
 
 Github Project
-    https://github.com/3techconsultants/mnlconnect
+    https://github.com/3techconsultants/utilimum
 
 **Ok Result Example:**
 ```json
@@ -38,7 +38,7 @@ Github Project
 
 ```php
 /*
- *  Mnl connect
+ *  Utilimum connect
  */
  use Utilimum\DefaultException\DefaultException;
 
@@ -56,7 +56,7 @@ Github Project
 
     $um->debug      = true;
 /*
- *  Mnl connect
+ *  Utilimum connect
  * @phonenumber int 5350000010
  * @rateid int [ get in method GetRates() ]
  * @customid int [no mandatory id from you platform]
@@ -64,8 +64,8 @@ Github Project
    $result  = $um->SendRecharge($phonenumber,$rateid,$customid);
 
 /*
- * Mnl connect
- * @nautaaccount int test@natua.com.cu
+ * Utilimum connect
+ * @nautaaccount int test@nauta.com.cu
  * @rateid int [ get in method GetRates() ]
  * @customid int [no mandatory id from you platform]
  */
