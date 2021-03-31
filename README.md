@@ -56,10 +56,12 @@ Github Project
 
     $um->debug      = true;
     
-   /* Default Provider
+   /*
+    * Default Provider
     * Utilimum
     */
-   $um->provider      = 1;
+    
+    $um->provider      = 1;
 /*
  *  Utilimum connect
  * @phonenumber int 5350000010
