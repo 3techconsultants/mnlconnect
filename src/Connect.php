@@ -102,10 +102,10 @@ class Connect{
 
     switch($this->provider){
       case 1:
-          ($this->debug)? $this->host ='https://api.qu3bola.com' :  $this->host='https://beta.qu3bola.com';
+          ($this->debug)? $this->host='https://beta.qu3bola.com' : $this->host ='https://v2.qu3bola.com';
       break;
       case 2:
-          ($this->debug)? $this->host ='https://api.utilimum.com' :  $this->host='https://beta.utilimum.com';
+          ($this->debug)? $this->host='https://reseller-api-beta.utilimum.com' : $this->host ='https://reseller-api.utilimum.com' ;
       break;
     }
 
