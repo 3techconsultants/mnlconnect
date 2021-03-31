@@ -2,7 +2,7 @@
     "name": "3techconsultants/utilimum",
     "description": "Reseller library",
     "type": "library",
-    "version": "v0.0.1",
+    "version": "v0.0.2",
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
