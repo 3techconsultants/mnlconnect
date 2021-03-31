@@ -13,7 +13,7 @@ Github Project
 **Ok Result Example:**
 ```json
 {
-    "APICode": "1",
+    "APICode": 1,
     "Status": "ok",
     "APICodeTextSP": "Destino ha sido recargado.",
     "APICodeTextEN": "Destination has been recharged.",
@@ -27,7 +27,7 @@ Github Project
 **Error Result Example:**
 ```json
 {
-    "APICode": "22",
+    "APICode": 22,
     "Status": "error",
     "APICodeTextSP": "Destino no pertenece a cliente con servicio.",
     "APICodeTextEN": "Destination not assigned to a subscriber.",
